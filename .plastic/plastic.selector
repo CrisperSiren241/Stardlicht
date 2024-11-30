@@ -1,0 +1,4 @@
+repository "Stardlicht@Rasdavalka@cloud"
+  path "/"
+    br "/main"
+    co "/main"
