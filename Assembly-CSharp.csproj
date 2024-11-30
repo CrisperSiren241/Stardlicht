@@ -68,7 +68,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.44f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -906,6 +906,7 @@
     <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj" />
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj" />
     <ProjectReference Include="Unity.Performance.Profile-Analyzer.Editor.csproj" />
     <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.csproj" />
     <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.csproj" />
@@ -922,6 +923,7 @@
     <ProjectReference Include="Unity.Rider.Editor.csproj" />
     <ProjectReference Include="Unity.VisualScripting.State.csproj" />
     <ProjectReference Include="Unity.VSCode.Editor.csproj" />
+    <ProjectReference Include="Cinemachine.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj" />
   </ItemGroup>
