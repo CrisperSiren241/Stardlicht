@@ -60,10 +60,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Users\edenu\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="D:\BSTU\4 курс\Гейм\Курсовой\Game\Stardlicht\Library\PackageCache\com.unity.collab-proxy@2.6.0\Lib\Editor\unityplastic.dll" />
-    <Analyzer Include="D:\BSTU\4 курс\Гейм\Курсовой\Game\Stardlicht\Library\PackageCache\com.unity.collab-proxy@2.6.0\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll" />
-    <Analyzer Include="D:\BSTU\4 курс\Гейм\Курсовой\Game\Stardlicht\Library\PackageCache\com.unity.collab-proxy@2.6.0\Lib\Editor\log4netPlastic.dll" />
-    <Analyzer Include="D:\BSTU\4 курс\Гейм\Курсовой\Game\Stardlicht\Library\PackageCache\com.unity.collab-proxy@2.6.0\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.44f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.44f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -80,8 +76,8 @@
     <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\Timeline\CinemachineShotPlayable.cs" />
     <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\PostProcessing\CinemachineVolumeSettings.cs" />
     <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\Behaviours\CinemachineExternalCamera.cs" />
-    <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\ThirdParty\clipper.cs" />
     <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\Core\GaussianFilter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\ThirdParty\clipper.cs" />
     <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\Components\CinemachineHardLockToTarget.cs" />
     <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\Behaviours\CinemachineCollider.cs" />
     <Compile Include="Library\PackageCache\com.unity.cinemachine@2.10.3\Runtime\Core\CinemachineCore.cs" />

@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     public float rollSpeed = 2f; // Скорость переката
     public float rollDuration = 0.5f; // Длительность переката
     public bool isRolling = false; // Флаг переката
-    private bool isRotationLocked = false;
     void Update()
     {
         if (isRolling)
@@ -65,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (direction.magnitude >= 0.1f && !isRotationLocked)
+        if (direction.magnitude >= 0.1f)
         {
             isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -100,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Roll(Vector3 inputDirection)
     {
         isRolling = true;
-        isRotationLocked = true;
 
         animator.SetTrigger("Roll");
 
@@ -127,7 +125,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         isRolling = false;
-        isRotationLocked = false; // Разблокируем вращение
     }
 
 }
