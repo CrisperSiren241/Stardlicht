@@ -23,30 +23,32 @@ public class TurretScript : MonoBehaviour
         dist = Vector3.Distance(_Player.position, transform.position);
         if (dist <= howClose)
         {
-            Vector3 direction = _Player.position - head.position; // Направление к игроку
-            Quaternion targetRotation = Quaternion.LookRotation(direction); // Целевой поворот
-            head.rotation = Quaternion.Slerp(head.rotation, targetRotation, Time.deltaTime * 5f); // Плавное вращение
-            Debug.DrawRay(_Barrel.position, head.forward * 5, Color.red, 2f);
+            // Получаем направление к игроку
+            Vector3 direction = _Player.position - head.position;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            head.rotation = Quaternion.Slerp(head.rotation, targetRotation, Time.deltaTime * 5f);
+
+            Debug.DrawRay(_Barrel.position, direction.normalized * 5, Color.red, 2f); // Используем нормализованное направление для отладки
 
             if (Time.time >= nextFire)
             {
                 nextFire = Time.time + 1f / fireRate;
-                Shoot();
+                Shoot(direction); // Передаем точное направление к игроку
             }
         }
     }
 
-    void Shoot()
+    void Shoot(Vector3 direction)
     {
+        // Инстанциируем снаряд
         GameObject clone = Instantiate(_projectile, _Barrel.position, Quaternion.identity);
         Rigidbody rb = clone.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.AddForce(head.forward * 5000);
+            // Применяем силу в направлении к игроку
+            rb.AddForce(direction.normalized * 3000);
         }
         Destroy(clone, 10f);
     }
-
-
 
 }
