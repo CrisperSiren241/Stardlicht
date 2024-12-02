@@ -37,11 +37,25 @@ public class PlayerMovement : MonoBehaviour
     public float rollSpeed = 2f; // Скорость переката
     public float rollDuration = 0.5f; // Длительность переката
     public bool isRolling = false; // Флаг переката
+    CharacterStats stats;
+
+    void Start()
+    {
+        stats = GetComponent<CharacterStats>();
+    }
     void Update()
     {
+
+        if (stats.isDead)
+        {
+            this.enabled = false;
+            controller.enabled = false;
+            return;
+        }
+
         if (isRolling)
         {
-            return; 
+            return;
         }
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -112,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rollDirection = cam.forward;
-            rollDirection.y = 0; 
+            rollDirection.y = 0;
             rollDirection.Normalize();
         }
 
