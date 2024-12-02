@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float turnSmoothVelocity = 0.1f;
     public Animator animator;
     public Transform cam;
-    public float walkSpeed = 0.3f;
-    public float runSpeed = 1f;
+    public float walkSpeed = 1f;
+    public float runSpeed = 2f;
     public float currentSpeed;
     bool isRunning;
 
@@ -38,14 +38,15 @@ public class PlayerMovement : MonoBehaviour
     public float rollDuration = 0.5f; // Длительность переката
     public bool isRolling = false; // Флаг переката
     CharacterStats stats;
+    public float runJumpMultiplier = 2.0f; // Добавим новый множитель для прыжка при беге
 
     void Start()
     {
         stats = GetComponent<CharacterStats>();
     }
+
     void Update()
     {
-
         if (stats.isDead)
         {
             this.enabled = false;
@@ -81,15 +82,17 @@ public class PlayerMovement : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            currentSpeed = isRunning ? runSpeed : walkSpeed;
+
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            float currentMoveSpeed = isJumping ? speed * jumpHorizontalMultiplier : speed;
+            float currentJumpMultiplier = isRunning ? runJumpMultiplier : jumpHorizontalMultiplier;
+            float currentMoveSpeed = isJumping ? Mathf.Min(currentSpeed * currentJumpMultiplier, runSpeed * runJumpMultiplier) : currentSpeed;
             controller.Move(moveDir.normalized * currentMoveSpeed * Time.deltaTime);
 
-            currentSpeed = isRunning ? runSpeed : walkSpeed;
             velocity = Mathf.Lerp(velocity, isRunning ? 1.0f : 0.5f, acceleration * Time.deltaTime);
         }
         else
